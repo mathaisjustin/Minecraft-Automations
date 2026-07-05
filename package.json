@@ -1,0 +1,25 @@
+{
+  "name": "minecraft-automation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Automation platform for a homelab Minecraft server. V1: AFK bot.",
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "pnpm -r test",
+    "bot": "pnpm --filter @mc/bot-manager start"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}

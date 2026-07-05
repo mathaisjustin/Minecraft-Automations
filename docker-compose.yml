@@ -1,0 +1,31 @@
+services:
+  bot-manager:
+    build:
+      context: .
+      dockerfile: docker/bot-manager.Dockerfile
+    container_name: afk-bot
+    restart: unless-stopped
+    environment:
+      MC_HOST: crafty # the crafty container's hostname on the shared network
+      MC_PORT: "25565"
+      MC_VERSION: "1.21.11"
+      BOT_NAME: AFK_Bot
+      LOG_FORMAT: json
+      API_PORT: "3000"
+      STATE_FILE: /data/state.json
+      # AUTO_START_BOT: "true"   # uncomment to connect on a fresh container (no saved state)
+      # API_TOKEN: "change-me"   # uncomment to require: Authorization: Bearer <token>
+    ports:
+      - "127.0.0.1:3000:3000" # API reachable from the host only
+    volumes:
+      - bot-state:/data # persists desired running/stopped state across restarts
+    networks:
+      - minecraft
+
+volumes:
+  bot-state:
+
+networks:
+  minecraft:
+    external: true
+    name: minecraft-server_default

@@ -1,0 +1,7 @@
+{
+  "AFK_Bot": {
+    "username": "AFK_Bot",
+    "afkLocation": "creeperFarm",
+    "reconnect": { "initialDelayMs": 5000, "maxDelayMs": 60000 }
+  }
+}
